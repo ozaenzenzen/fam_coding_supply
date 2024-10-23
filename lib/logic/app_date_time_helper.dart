@@ -1,5 +1,5 @@
 class AppDateTimeHelper {
-  static String processDateTime(String responseBody) {
+  String processDateTime(String responseBody) {
     // Find the position of the '+' character
     int plusIndex = responseBody.indexOf('+');
 

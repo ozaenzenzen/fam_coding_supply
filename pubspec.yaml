@@ -21,7 +21,7 @@ dependencies:
   hex:
   pointycastle:
   encrypt:
-  get_storage: 
+  get_storage: 2.1.1
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
