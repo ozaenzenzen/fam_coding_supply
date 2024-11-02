@@ -3,9 +3,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 enum AppConnectivityStatus { wifi, cellular, offline }
 
 class AppConnectivityService {
-  AppConnectivityStatus connectionStatus = AppConnectivityStatus.offline;
+  static AppConnectivityStatus connectionStatus = AppConnectivityStatus.offline;
 
-  void init() async {
+  static Future<void> init() async {
     connectionStatus = _connectionStatus(await Connectivity().checkConnectivity());
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       connectionStatus = _connectionStatus(result);
@@ -13,7 +13,7 @@ class AppConnectivityService {
   }
 
   /// Convert from the third part enum to our own enum
-  AppConnectivityStatus _connectionStatus(ConnectivityResult result) {
+  static AppConnectivityStatus _connectionStatus(ConnectivityResult result) {
     switch (result) {
       case ConnectivityResult.mobile:
         return AppConnectivityStatus.cellular;

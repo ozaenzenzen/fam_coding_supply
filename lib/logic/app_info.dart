@@ -11,7 +11,7 @@ class AppInfo {
 
   PackageInfo? packageInfo;
 
-  Future<void> appInfoInit() async {
+  Future<void> init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     appVersion = "${packageInfo.version}+${packageInfo.buildNumber}$buildTypeCustom";
   }

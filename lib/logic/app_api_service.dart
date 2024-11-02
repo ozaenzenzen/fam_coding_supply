@@ -25,8 +25,8 @@ class AppApiService {
     String? token,
     bool useFormData = false,
   }) async {
-    debugPrint("current connectivity status :${AppConnectivityService().connectionStatus}");
-    if (AppConnectivityService().connectionStatus == AppConnectivityStatus.offline) {
+    debugPrint("current connectivity status :${AppConnectivityService.connectionStatus}");
+    if (AppConnectivityService.connectionStatus == AppConnectivityStatus.offline) {
       Response response = Response(
         data: {
           "message": "You are offline",
