@@ -100,9 +100,11 @@ class AppApiService {
     } on DioError catch (e) {
       // debugPrint('Error $selectedMethod $url: $e\nData: ${(e.response?.data ?? "empty")}');
       if (e.response?.data is Map) {
-        (e.response?.data as Map).addAll(<String, dynamic>{
-          "status": "error",
-        });
+        if ((e.response?.data as Map)['status'] == null) {
+          (e.response?.data as Map).addAll(<String, dynamic>{
+            "status": "error",
+          });
+        }
         // qoin.QoinSdk.defaultErrorHandler(e.response!);
         return e.response!;
       } else {
