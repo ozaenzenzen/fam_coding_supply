@@ -15,12 +15,12 @@ dependencies:
   package_info_plus: ^4.2.0
   skeletons: ^0.0.3
   google_fonts: 5.0.0
-  flutter_keychain: ^2.4.0
+  flutter_keychain: 2.3.0
   flutter_screenutil: ^5.9.0
   hive_flutter: 1.1.0
   hex:
   pointycastle:
-  encrypt:
+  encrypt: 5.0.2
   get_storage: 2.1.1
   flutter:
     sdk: flutter
@@ -28,7 +28,7 @@ dependencies:
   device_info_plus: ^9.1.2
   uuid: ^4.2.2
   geolocator: ^10.1.0
-  app_settings: ^5.1.1
+  app_settings: 4.1.8
   super_tooltip: ^2.0.8
   flutter_inappwebview: ^5.7.2+3
 

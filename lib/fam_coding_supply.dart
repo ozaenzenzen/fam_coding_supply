@@ -5,7 +5,7 @@
 // platforms in the `pubspec.yaml` at
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
-library FamCodingSupply;
+library fam_coding_supply;
 
 import 'package:fam_coding_supply/fam_coding_supply_platform_interface.dart';
 

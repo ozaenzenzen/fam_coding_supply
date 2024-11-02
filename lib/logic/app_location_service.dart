@@ -141,7 +141,8 @@ class AppLocationService {
     if (permission == LocationPermission.deniedForever) {
       await onDeniedForever?.call(
         () async {
-          await AppSettings.openAppSettings(type: AppSettingsType.location);
+          await AppSettings.openLocationSettings();
+          // await AppSettings.openAppSettings(type: AppSettingsType.location);
         },
       );
     }
