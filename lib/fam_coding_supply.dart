@@ -6,10 +6,9 @@
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
 import 'package:fam_coding_supply/logic/app_connectivity_service.dart';
+import 'package:fam_coding_supply/logic/app_device_info.dart';
 import 'package:fam_coding_supply/logic/app_info.dart';
 import 'package:fam_coding_supply/logic/local_service_hive.dart';
-
-import 'fam_coding_supply_platform_interface.dart';
 
 class FamCodingSupply {
   // Future<String?> getPlatformVersion() {
@@ -17,5 +16,6 @@ class FamCodingSupply {
   // }
   AppConnectivityService appConnectivityService = AppConnectivityService();
   AppInfo appInfo = AppInfo();
+  AppDeviceInfo appDeviceInfo = AppDeviceInfo();
   LocalServiceHive localServiceHive = LocalServiceHive();
 }
