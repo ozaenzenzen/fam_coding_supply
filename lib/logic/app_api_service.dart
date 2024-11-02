@@ -9,8 +9,10 @@ class AppApiService {
 
   AppApiService(String baseUrl) {
     dio.options.baseUrl = baseUrl;
-    dio.options.connectTimeout = const Duration(milliseconds: 90000); //90s
-    dio.options.receiveTimeout = const Duration(milliseconds: 50000); //50s
+    // dio.options.connectTimeout = const Duration(milliseconds: 90000); //90s
+    // dio.options.receiveTimeout = const Duration(milliseconds: 50000); //50s
+    dio.options.connectTimeout = 90000; //90s
+    dio.options.receiveTimeout = 50000; //50s
     dio.options.headers = {'Accept': 'application/json'};
     dio.options.receiveDataWhenStatusError = true;
   }
