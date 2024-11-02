@@ -29,6 +29,8 @@ dependencies:
   uuid: ^4.2.2
   geolocator: ^10.1.0
   app_settings: ^5.1.1
+  super_tooltip: ^2.0.8
+  flutter_inappwebview: ^5.7.2+3
 
 dev_dependencies:
   flutter_test:
