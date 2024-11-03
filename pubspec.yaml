@@ -27,7 +27,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   device_info_plus: ^9.1.2
   uuid: ^4.2.2
-  geolocator: ^10.1.0
+  geolocator: 8.2.1
   app_settings: 4.1.8
   super_tooltip: ^2.0.8
   flutter_inappwebview: ^5.7.2+3
