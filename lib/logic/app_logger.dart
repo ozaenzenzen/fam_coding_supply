@@ -3,10 +3,14 @@ import 'dart:developer';
 class AppLogger {
   static void debugLog(
     String value, {
-    isActive = true,
+    bool isActive = true,
   }) {
-    if (isActive) {
-      log(value);
+    if (useLogger != null && useLogger == true) {
+      if (isActive) {
+        log(value);
+      }
     }
   }
+
+  static bool? useLogger;
 }
