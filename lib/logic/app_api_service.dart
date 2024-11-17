@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fam_coding_supply/logic/app_connectivity_service.dart';
+import 'package:fam_coding_supply/fam_coding_supply.dart';
 import 'package:flutter/material.dart';
 
 enum MethodRequest { post, get, put, delete }
@@ -25,7 +25,7 @@ class AppApiService {
     String? token,
     bool useFormData = false,
   }) async {
-    debugPrint("current connectivity status :${AppConnectivityService().connectionStatus}");
+    AppLogger.debugLog("current connectivity status :${AppConnectivityService().connectionStatus}");
     if (AppConnectivityService().connectionStatus == AppConnectivityStatus.offline) {
       Response response = Response(
         data: {
