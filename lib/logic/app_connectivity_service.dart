@@ -3,6 +3,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 enum AppConnectivityStatus { wifi, cellular, offline }
 
 class AppConnectivityService {
+  AppConnectivityService._internal();
+
+  static final AppConnectivityService _instance = AppConnectivityService._internal();
+
+  factory AppConnectivityService() {
+    return _instance;
+  }
+
   AppConnectivityStatus connectionStatus = AppConnectivityStatus.offline;
 
   Future<void> init() async {
