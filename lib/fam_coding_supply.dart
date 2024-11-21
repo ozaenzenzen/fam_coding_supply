@@ -14,11 +14,15 @@ import 'package:fam_coding_supply/logic/export.dart';
 export 'package:fam_coding_supply/logic/export.dart';
 export 'package:fam_coding_supply/ui/export.dart';
 export 'package:fam_coding_supply/fam_coding_supply.dart';
+export 'package:google_fonts/google_fonts.dart';
+export 'package:super_tooltip/super_tooltip.dart';
+export 'package:intl/intl.dart';
+export 'package:dio/dio.dart';
 
 class FamCodingSupply {
-  AppConnectivityService appConnectivityService = AppConnectivityService();
-  AppInfo appInfo = AppInfo();
-  AppDeviceInfo appDeviceInfo = AppDeviceInfo();
+  AppConnectivityServiceCS appConnectivityService = AppConnectivityServiceCS();
+  AppInfoCS appInfo = AppInfoCS();
+  AppDeviceInfoCS appDeviceInfo = AppDeviceInfoCS();
   LocalServiceHive localServiceHive = LocalServiceHive();
 
   Future<String?> getPlatformVersion() {

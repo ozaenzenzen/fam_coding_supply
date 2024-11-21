@@ -1,9 +1,9 @@
 import 'package:get_storage/get_storage.dart';
 
-class LocalService {
-  LocalService._();
+class LocalServiceCS {
+  LocalServiceCS._();
 
-  static final LocalService instance = LocalService._();
+  static final LocalServiceCS instance = LocalServiceCS._();
 
   final box = GetStorage();
 }

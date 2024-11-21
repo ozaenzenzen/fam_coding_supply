@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:fam_coding_supply/fam_coding_supply.dart';
 import 'package:flutter/material.dart';
 
-enum MethodRequest { post, get, put, delete }
+enum MethodRequestCS { post, get, put, delete }
 
-class AppApiService {
+class AppApiServiceCS {
   Dio dio = Dio();
 
-  AppApiService(String baseUrl) {
+  AppApiServiceCS(String baseUrl) {
     dio.options.baseUrl = baseUrl;
     // dio.options.connectTimeout = const Duration(milliseconds: 90000); //90s
     // dio.options.receiveTimeout = const Duration(milliseconds: 50000); //50s
@@ -19,14 +19,14 @@ class AppApiService {
 
   Future<Response> call(
     String url, {
-    MethodRequest method = MethodRequest.post,
+    MethodRequestCS method = MethodRequestCS.post,
     Map<String, dynamic>? request,
     Map<String, String>? header,
     String? token,
     bool useFormData = false,
   }) async {
-    AppLoggerCS.debugLog("current connectivity status :${AppConnectivityService().connectionStatus}");
-    if (AppConnectivityService().connectionStatus == AppConnectivityStatus.offline) {
+    AppLoggerCS.debugLog("current connectivity status :${AppConnectivityServiceCS().connectionStatus}");
+    if (AppConnectivityServiceCS().connectionStatus == AppConnectivityStatus.offline) {
       Response response = Response(
         data: {
           "message": "You are offline",
@@ -53,7 +53,7 @@ class AppApiService {
           'Authorization': 'Bearer $token',
         };
       }
-      if (method == MethodRequest.put) {
+      if (method == MethodRequestCS.put) {
         dio.options.headers = {
           'Accept': 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -68,22 +68,22 @@ class AppApiService {
     debugPrint("Request : $request");
 
     // ignore: unused_local_variable
-    MethodRequest selectedMethod;
+    MethodRequestCS selectedMethod;
     try {
       Response response;
       switch (method) {
-        case MethodRequest.get:
+        case MethodRequestCS.get:
           selectedMethod = method;
           response = await dio.get(url, queryParameters: request);
           break;
-        case MethodRequest.put:
+        case MethodRequestCS.put:
           selectedMethod = method;
           response = await dio.put(
             url,
             data: useFormData ? FormData.fromMap(request!) : request,
           );
           break;
-        case MethodRequest.delete:
+        case MethodRequestCS.delete:
           selectedMethod = method;
           response = await dio.delete(
             url,
@@ -91,7 +91,7 @@ class AppApiService {
           );
           break;
         default:
-          selectedMethod = MethodRequest.post;
+          selectedMethod = MethodRequestCS.post;
           response = await dio.post(
             url,
             data: useFormData ? FormData.fromMap(request!) : request,

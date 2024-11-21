@@ -1,6 +1,6 @@
 import 'package:package_info_plus/package_info_plus.dart';
 
-class AppInfo {
+class AppInfoCS {
   String? appVersion = "-";
   // static String? get appVersion => _appVersion;
   // static set appVersion(String? appVersion) {

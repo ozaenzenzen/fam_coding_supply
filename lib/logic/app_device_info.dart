@@ -5,7 +5,7 @@ import 'package:fam_coding_supply/logic/model/device_info_data_entity.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:uuid/uuid.dart';
 
-class AppDeviceInfo {
+class AppDeviceInfoCS {
   final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   // final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   static DeviceInfoData? deviceInfoData;

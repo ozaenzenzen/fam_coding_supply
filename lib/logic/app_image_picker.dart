@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:fam_coding_supply/logic/app_logger.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AppImagePickerService {
+class AppImagePickerServiceCS {
   final ImagePicker _picker = ImagePicker();
 
   Future<XFile?> getImage({
@@ -23,7 +23,7 @@ class AppImagePickerService {
 
       return image;
     } catch (e) {
-      AppLoggerCS.debugLog("[AppImagePickerService][getImage] $e");
+      AppLoggerCS.debugLog("[AppImagePickerServiceCS][getImage] $e");
       return null;
     }
   }
@@ -45,7 +45,7 @@ class AppImagePickerService {
       String base64Image = base64Encode(fileFormat.readAsBytesSync());
       return base64Image;
     } catch (e) {
-      AppLoggerCS.debugLog("[AppImagePickerService][getImageAsBase64] $e");
+      AppLoggerCS.debugLog("[AppImagePickerServiceCS][getImageAsBase64] $e");
       return null;
     }
   }
@@ -68,7 +68,7 @@ class AppImagePickerService {
 
       return fileFormat;
     } catch (e) {
-      AppLoggerCS.debugLog("[AppImagePickerService][getImageAsFile] $e");
+      AppLoggerCS.debugLog("[AppImagePickerServiceCS][getImageAsFile] $e");
       return null;
     }
   }

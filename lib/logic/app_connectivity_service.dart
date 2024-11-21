@@ -2,12 +2,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 enum AppConnectivityStatus { wifi, cellular, offline }
 
-class AppConnectivityService {
-  AppConnectivityService._internal();
+class AppConnectivityServiceCS {
+  AppConnectivityServiceCS._internal();
 
-  static final AppConnectivityService _instance = AppConnectivityService._internal();
+  static final AppConnectivityServiceCS _instance = AppConnectivityServiceCS._internal();
 
-  factory AppConnectivityService() {
+  factory AppConnectivityServiceCS() {
     return _instance;
   }
 
