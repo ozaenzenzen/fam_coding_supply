@@ -44,7 +44,7 @@ class AppTextFieldWidget extends StatefulWidget {
     this.prefixIcon,
     this.obscureText = false,
     this.filled = true,
-    this.fillColor = AppColor.shape_3,
+    this.fillColor = AppColorCS.shape_3,
     this.border,
     this.radius,
     this.textInputAction,

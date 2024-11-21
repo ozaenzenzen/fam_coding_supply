@@ -36,10 +36,10 @@ class AppSecondaryButtonWidget extends StatefulWidget {
     this.height = 40,
     this.width,
     this.color,
-    this.borderColor = AppColor.error,
+    this.borderColor = AppColorCS.error,
     this.radius = 8,
     this.elevation = 0,
-    this.textColor = AppColor.error,
+    this.textColor = AppColorCS.error,
   }) : super(key: key);
 
   @override

@@ -22,7 +22,7 @@ class _AppBottomNavBarButtonWidgetState extends State<AppBottomNavBarButtonWidge
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: AppColor.white,
+        color: AppColorCS.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 10,

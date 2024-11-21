@@ -46,7 +46,7 @@ class AppWebViewScreen extends StatelessWidget {
                 Text(
                   title,
                   textScaleFactor: 1,
-                  style: AppTheme.theme.textTheme.displaySmall?.copyWith(
+                  style: AppThemeCS.theme.textTheme.displaySmall?.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
                   ),

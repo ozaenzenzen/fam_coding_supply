@@ -29,7 +29,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColor.primary,
+      backgroundColor: AppColorCS.primary,
       elevation: 10,
       shadowColor: const Color(0xff101828),
       centerTitle: true,
@@ -74,7 +74,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return AppBar(
-//       backgroundColor: AppColor.primary,
+//       backgroundColor: AppColorCS.primary,
 //       elevation: 10,
 //       shadowColor: const Color(0xff101828),
 //       centerTitle: true,

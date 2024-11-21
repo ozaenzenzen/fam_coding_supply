@@ -25,7 +25,7 @@ class AppApiService {
     String? token,
     bool useFormData = false,
   }) async {
-    AppLogger.debugLog("current connectivity status :${AppConnectivityService().connectionStatus}");
+    AppLoggerCS.debugLog("current connectivity status :${AppConnectivityService().connectionStatus}");
     if (AppConnectivityService().connectionStatus == AppConnectivityStatus.offline) {
       Response response = Response(
         data: {

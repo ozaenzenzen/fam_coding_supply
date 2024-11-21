@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-class AppLogger {
+class AppLoggerCS {
   static void debugLog(
     String value, {
     bool isActive = true,

@@ -26,7 +26,7 @@ class AppTooltipWidget extends StatelessWidget {
         message,
         softWrap: true,
         style: GoogleFonts.inter(
-          color: AppColor.white,
+          color: AppColorCS.white,
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
         ),

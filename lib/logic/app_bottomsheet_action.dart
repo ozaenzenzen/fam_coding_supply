@@ -20,7 +20,7 @@ class AppBottomSheetAction {
         return SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(
-              color: color ?? AppColor.white,
+              color: color ?? AppColorCS.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(radius),
                 topRight: Radius.circular(radius),
@@ -74,7 +74,7 @@ class AppBottomSheetAction {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: color ?? AppColor.white,
+              color: color ?? AppColorCS.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(radius),
                 topRight: Radius.circular(radius),
@@ -103,7 +103,7 @@ class AppBottomSheetAction {
                         Text(
                           title,
                           style: GoogleFonts.mukta(
-                            color: AppColor.primary,
+                            color: AppColorCS.primary,
                             fontWeight: FontWeight.w600,
                             fontSize: 20.sp,
                           ),
@@ -160,7 +160,7 @@ class AppBottomSheetAction {
           child: SingleChildScrollView(
             child: Container(
               decoration: BoxDecoration(
-                color: color ?? AppColor.white,
+                color: color ?? AppColorCS.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(radius),
                   topRight: Radius.circular(radius),

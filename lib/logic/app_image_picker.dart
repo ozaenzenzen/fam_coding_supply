@@ -23,7 +23,7 @@ class AppImagePickerService {
 
       return image;
     } catch (e) {
-      AppLogger.debugLog("[AppImagePickerService][getImage] $e");
+      AppLoggerCS.debugLog("[AppImagePickerService][getImage] $e");
       return null;
     }
   }
@@ -45,7 +45,7 @@ class AppImagePickerService {
       String base64Image = base64Encode(fileFormat.readAsBytesSync());
       return base64Image;
     } catch (e) {
-      AppLogger.debugLog("[AppImagePickerService][getImageAsBase64] $e");
+      AppLoggerCS.debugLog("[AppImagePickerService][getImageAsBase64] $e");
       return null;
     }
   }
@@ -68,7 +68,7 @@ class AppImagePickerService {
 
       return fileFormat;
     } catch (e) {
-      AppLogger.debugLog("[AppImagePickerService][getImageAsFile] $e");
+      AppLoggerCS.debugLog("[AppImagePickerService][getImageAsFile] $e");
       return null;
     }
   }
@@ -77,7 +77,7 @@ class AppImagePickerService {
     // Calculate the size in MB
     int sizeInBytes = await fileFormat.length();
     double sizeInMb = sizeInBytes / (1024 * 1024);
-    AppLogger.debugLog("Image Size MB: $sizeInMb");
-    AppLogger.debugLog("Image Size KB: ${sizeInMb * 1000}");
+    AppLoggerCS.debugLog("Image Size MB: $sizeInMb");
+    AppLoggerCS.debugLog("Image Size KB: ${sizeInMb * 1000}");
   }
 }
