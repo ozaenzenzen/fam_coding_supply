@@ -6,6 +6,7 @@ class DeviceInfoData {
   final String appVersion;
   final String? pushToken;
   final String registeredAt;
+  final String randomIdentifier;
 
   DeviceInfoData({
     required this.deviceId,
@@ -15,6 +16,7 @@ class DeviceInfoData {
     required this.appVersion,
     this.pushToken,
     required this.registeredAt,
+    required this.randomIdentifier,
   });
 
   // Factory method to create a Device object from a map (useful for parsing JSON)
@@ -27,6 +29,7 @@ class DeviceInfoData {
       appVersion: map['appVersion'] ?? '',
       pushToken: map['pushToken'],
       registeredAt: map['registeredAt'] ?? '',
+      randomIdentifier: map['randomIdentifier'] ?? '',
     );
   }
 
@@ -40,6 +43,7 @@ class DeviceInfoData {
       'appVersion': appVersion,
       'pushToken': pushToken,
       'registeredAt': registeredAt,
+      'randomIdentifier': randomIdentifier,
     };
   }
 }

@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:fam_coding_supply/logic/app_logger.dart';
 import 'package:fam_coding_supply/logic/model/device_info_data_entity.dart';
+import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:uuid/uuid.dart';
 
@@ -17,23 +20,39 @@ class AppDeviceInfoCS {
     String osVersion;
 
     // Get Device Information
-    if (Platform.isAndroid) {
-      final androidInfo = await deviceInfo.androidInfo;
-      deviceId = androidInfo.id; // Android ID or generate a UUID
-      deviceName = androidInfo.model;
-      deviceType = "Android";
-      osVersion = "Android ${androidInfo.version.release}";
-    } else if (Platform.isIOS) {
-      final iosInfo = await deviceInfo.iosInfo;
-      deviceId = iosInfo.identifierForVendor ?? const Uuid().v4(); // iOS Device ID or generate a UUID
-      deviceName = iosInfo.utsname.machine;
-      deviceType = "iOS";
-      osVersion = "iOS ${iosInfo.systemVersion}";
+    if (kIsWeb) {
+      WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
+      // AppLoggerCS.debugLog("webBrowserInfo ${(webBrowserInfo.productSub)}");
+      // AppLoggerCS.debugLog("webBrowserInfo ${webBrowserInfo.appCodeName} ${webBrowserInfo.appName} ${webBrowserInfo.appVersion}");
+      deviceId = webBrowserInfo.productSub ?? const Uuid().v4();
+      deviceName = "${webBrowserInfo.appCodeName} ${webBrowserInfo.appName} ${webBrowserInfo.appVersion}" ?? "Unknown Device";
+      deviceType = "Web";
+      osVersion = "${webBrowserInfo.appVersion}";
     } else {
-      deviceId = const Uuid().v4();
-      deviceName = "Unknown Device";
-      deviceType = "Unknown";
-      osVersion = "Unknown OS";
+      if (Platform.isAndroid) {
+        final androidInfo = await deviceInfo.androidInfo;
+        deviceId = androidInfo.id; // Android ID or generate a UUID
+        deviceName = androidInfo.model;
+        deviceType = "Android";
+        osVersion = "Android ${androidInfo.version.release}";
+      } else if (Platform.isIOS) {
+        final iosInfo = await deviceInfo.iosInfo;
+        deviceId = iosInfo.identifierForVendor ?? const Uuid().v4(); // iOS Device ID or generate a UUID
+        deviceName = iosInfo.utsname.machine;
+        deviceType = "iOS";
+        osVersion = "iOS ${iosInfo.systemVersion}";
+      } else if (Platform.isLinux) {
+        final linuxInfo = await deviceInfo.linuxInfo;
+        deviceId = linuxInfo.id;
+        deviceName = linuxInfo.name;
+        deviceType = "Linux";
+        osVersion = "Linux ${linuxInfo.version}";
+      } else {
+        deviceId = const Uuid().v4();
+        deviceName = "Unknown Device";
+        deviceType = "Unknown";
+        osVersion = "Unknown OS";
+      }
     }
 
     // Get App Version
@@ -53,6 +72,7 @@ class AppDeviceInfoCS {
       osVersion: osVersion,
       appVersion: appVersion,
       registeredAt: registeredAt,
+      randomIdentifier: const Uuid().v4(),
     );
     deviceInfoData = result;
     return result;
