@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppMainButtonWidget extends StatefulWidget {
-  final Function() onPressed;
+  final Function()? onPressed;
   final String text;
   final double? fontSize;
   final FontWeight? fontWeight;
