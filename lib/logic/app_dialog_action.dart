@@ -140,6 +140,166 @@ class AppDialogActionCS {
   static Future<void> showMainPopup({
     required BuildContext context,
     Function()? mainButtonAction,
+    Function()? secondaryButtonAction,
+    double radius = 0,
+    String title = "",
+    String? buttonTitle,
+    String? secondaryButtonTitle,
+    Color? mainButtonColor,
+    Color? secondaryButtonColor,
+    Color? color,
+    Widget? content,
+    bool barrierDismissible = true,
+    bool useButtonBack = true,
+    bool reverseButton = false,
+    bool isHorizontal = true,
+    EdgeInsetsGeometry padding = const EdgeInsets.all(16),
+    double? buttonHeight,
+    double? buttonTextSize,
+  }) async {
+    Color defaultSecondaryButtonColor = Colors.red;
+    // Color defaultSecondaryButtonColor = Colors.grey.shade700;
+    return await showPopup(
+      context: context,
+      radius: radius,
+      color: color,
+      content: Column(
+        children: [
+          Row(
+            children: [
+              useButtonBack
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: SizedBox(
+                        height: 20.h,
+                        width: 20.h,
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: 20.h,
+                          color: const Color(0xff26120F),
+                        ),
+                      ),
+                    )
+                  : const SizedBox(),
+              SizedBox(width: 20.w),
+              Text(
+                title,
+                style: GoogleFonts.inter(
+                  color: const Color(0xff26120F),
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 24.h),
+          content ?? const SizedBox(),
+          SizedBox(height: 24.h),
+          (isHorizontal)
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: reverseButton
+                      ? [
+                          if (secondaryButtonTitle != null)
+                            AppMainButtonWidget(
+                              onPressed: secondaryButtonAction,
+                              text: secondaryButtonTitle,
+                              fontSize: buttonTextSize ?? 18.sp,
+                              height: buttonHeight ?? 48.h,
+                              color: secondaryButtonColor ?? defaultSecondaryButtonColor,
+                            ),
+                          if (buttonTitle != null && secondaryButtonTitle != null) SizedBox(height: 8.h),
+                          if (buttonTitle != null)
+                            AppMainButtonWidget(
+                              onPressed: mainButtonAction,
+                              text: buttonTitle,
+                              fontSize: buttonTextSize ?? 18.sp,
+                              height: buttonHeight ?? 48.h,
+                              color: mainButtonColor,
+                            ),
+                        ]
+                      : [
+                          if (buttonTitle != null)
+                            AppMainButtonWidget(
+                              onPressed: mainButtonAction,
+                              text: buttonTitle,
+                              fontSize: buttonTextSize ?? 18.sp,
+                              height: buttonHeight ?? 48.h,
+                              color: mainButtonColor,
+                            ),
+                          if (buttonTitle != null && secondaryButtonTitle != null) SizedBox(height: 8.h),
+                          if (secondaryButtonTitle != null)
+                            AppMainButtonWidget(
+                              onPressed: secondaryButtonAction,
+                              text: secondaryButtonTitle,
+                              fontSize: buttonTextSize ?? 18.sp,
+                              height: buttonHeight ?? 48.h,
+                              color: secondaryButtonColor ?? defaultSecondaryButtonColor,
+                            ),
+                        ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: reverseButton
+                      ? [
+                          if (secondaryButtonTitle != null)
+                            Expanded(
+                              child: AppMainButtonWidget(
+                                onPressed: secondaryButtonAction,
+                                text: secondaryButtonTitle,
+                                fontSize: buttonTextSize ?? 18.sp,
+                                height: buttonHeight ?? 48.h,
+                                color: secondaryButtonColor ?? defaultSecondaryButtonColor,
+                              ),
+                            ),
+                          if (buttonTitle != null && secondaryButtonTitle != null) SizedBox(width: 12.w),
+                          if (buttonTitle != null)
+                            Expanded(
+                              child: AppMainButtonWidget(
+                                onPressed: mainButtonAction,
+                                text: buttonTitle,
+                                fontSize: buttonTextSize ?? 18.sp,
+                                height: buttonHeight ?? 48.h,
+                                color: mainButtonColor,
+                              ),
+                            ),
+                        ]
+                      : [
+                          if (buttonTitle != null)
+                            Expanded(
+                              child: AppMainButtonWidget(
+                                onPressed: mainButtonAction,
+                                text: buttonTitle,
+                                fontSize: buttonTextSize ?? 18.sp,
+                                height: buttonHeight ?? 48.h,
+                                color: mainButtonColor,
+                              ),
+                            ),
+                          if (buttonTitle != null && secondaryButtonTitle != null) SizedBox(width: 12.w),
+                          if (secondaryButtonTitle != null)
+                            Expanded(
+                              child: AppMainButtonWidget(
+                                onPressed: secondaryButtonAction,
+                                text: secondaryButtonTitle,
+                                fontSize: buttonTextSize ?? 18.sp,
+                                height: buttonHeight ?? 48.h,
+                                color: secondaryButtonColor ?? defaultSecondaryButtonColor,
+                              ),
+                            ),
+                        ],
+                ),
+        ],
+      ),
+      barrierDismissible: barrierDismissible,
+      padding: padding,
+    );
+  }
+
+  static Future<void> showMainPopupOld({
+    required BuildContext context,
+    Function()? mainButtonAction,
     double radius = 0,
     String title = "",
     String buttonTitle = "",
@@ -360,7 +520,7 @@ class AppDialogActionCS {
     required String title,
     required String description,
     required String buttonTitle,
-    Function()? mainButtonAction,
+    required Function() mainButtonAction,
     double radius = 10,
     double? buttonHeight,
     double? buttonTextSize,
@@ -402,16 +562,89 @@ class AppDialogActionCS {
         ],
       ),
       buttonTitle: buttonTitle,
+      // mainButtonAction: mainButtonAction ??
+      //     () {
+      //       if (barrierDismissible) {
+      //         Navigator.pop(context);
+      //       }
+      //     },
+      // mainButtonAction: mainButtonAction ?? () {},
+      mainButtonAction: mainButtonAction,
+    );
+  }
+
+  static Future<void> showWarningPopup({
+    required BuildContext context,
+    required String title,
+    required String description,
+    String? mainButtonTitle,
+    String? secondaryButtonTitle,
+    Function()? mainButtonAction,
+    Function()? secondaryButtonAction,
+    Color? mainButtonColor,
+    Color? secondaryButtonColor,
+    double radius = 10,
+    double? buttonHeight,
+    double? buttonTextSize,
+    bool barrierDismissible = true,
+    bool reverseButton = false,
+    bool isHorizontal = true,
+  }) async {
+    await showMainPopup(
+      context: context,
+      title: '',
+      radius: radius,
+      buttonHeight: buttonHeight,
+      buttonTextSize: buttonTextSize,
+      barrierDismissible: barrierDismissible,
+      useButtonBack: false,
+      reverseButton: reverseButton,
+      isHorizontal: isHorizontal,
+      content: Column(
+        children: [
+          Image.asset(
+            AppAssets.iconPopupWarning,
+            height: 96.h,
+            width: 96.h,
+          ),
+          SizedBox(height: 16.h),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 12.h),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+      buttonTitle: mainButtonTitle,
+      secondaryButtonTitle: secondaryButtonTitle,
+      mainButtonColor: mainButtonColor,
+      secondaryButtonColor: secondaryButtonColor,
       mainButtonAction: mainButtonAction ??
           () {
             if (barrierDismissible) {
               Navigator.pop(context);
             }
           },
+      secondaryButtonAction: secondaryButtonAction ??
+          () {
+            //
+          },
     );
   }
 
-  static Future<void> showWarningPopup({
+  static Future<void> showWarningPopupOld({
     required BuildContext context,
     required String title,
     required String description,
