@@ -167,21 +167,23 @@ class AppDialogActionCS {
         children: [
           Row(
             children: [
-              useButtonBack
-                  ? InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SizedBox(
-                        height: 20.h,
-                        width: 20.h,
-                        child: Icon(
-                          Icons.arrow_back,
-                          size: 20.h,
-                          color: const Color(0xff26120F),
-                        ),
-                      ),
-                    )
+              barrierDismissible
+                  ? useButtonBack
+                      ? InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: SizedBox(
+                            height: 20.h,
+                            width: 20.h,
+                            child: Icon(
+                              Icons.arrow_back,
+                              size: 20.h,
+                              color: const Color(0xff26120F),
+                            ),
+                          ),
+                        )
+                      : const SizedBox()
                   : const SizedBox(),
               SizedBox(width: 20.w),
               Text(
@@ -436,7 +438,10 @@ class AppDialogActionCS {
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) => WillPopScope(
-        onWillPop: () => Future.value(barrierDismissible),
+        // onWillPop: () => Future.value(barrierDismissible),
+        onWillPop: () async {
+          return barrierDismissible;
+        },
         child: Center(
           child: SingleChildScrollView(
             child: Material(
