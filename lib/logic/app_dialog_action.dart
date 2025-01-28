@@ -156,10 +156,12 @@ class AppDialogActionCS {
     EdgeInsetsGeometry padding = const EdgeInsets.all(16),
     double? buttonHeight,
     double? buttonTextSize,
+    void Function(bool isOpen)? isDialogOpen,
   }) async {
     Color defaultSecondaryButtonColor = Colors.red;
     // Color defaultSecondaryButtonColor = Colors.grey.shade700;
-    return await showPopup(
+    isDialogOpen?.call(true);
+    await showPopup(
       context: context,
       radius: radius,
       color: color,
@@ -297,6 +299,7 @@ class AppDialogActionCS {
       barrierDismissible: barrierDismissible,
       padding: padding,
     );
+    isDialogOpen?.call(false);
   }
 
   static Future<void> showMainPopupOld({
