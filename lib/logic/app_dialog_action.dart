@@ -490,6 +490,7 @@ class AppDialogActionCS {
         children: [
           Image.asset(
             AppAssets.iconPopupSuccess,
+            package: "fam_coding_supply",
             height: 96.h,
             width: 96.h,
           ),
@@ -546,6 +547,7 @@ class AppDialogActionCS {
         children: [
           Image.asset(
             AppAssets.iconPopupError,
+            package: "fam_coding_supply",
             height: 96.h,
             width: 96.h,
           ),
@@ -612,6 +614,7 @@ class AppDialogActionCS {
         children: [
           Image.asset(
             AppAssets.iconPopupWarning,
+            package: "fam_coding_supply",
             height: 96.h,
             width: 96.h,
           ),
@@ -675,6 +678,7 @@ class AppDialogActionCS {
         children: [
           Image.asset(
             AppAssets.iconPopupWarning,
+            package: "fam_coding_supply",
             height: 96.h,
             width: 96.h,
           ),
