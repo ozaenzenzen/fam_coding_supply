@@ -11,43 +11,48 @@ class AppBottomSheetAction {
     bool withStrip = false,
     Color? color,
     Widget? content,
+    Color? backgroundColor = Colors.transparent,
+    bool isScrollControlled = true,
+    bool useSafeArea = true,
     EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
   }) async {
     // return Get.bottomSheet<T>(
     return showModalBottomSheet(
       context: context,
+      backgroundColor: backgroundColor,
+      isScrollControlled: isScrollControlled,
+      useSafeArea: useSafeArea,
       builder: (context) {
-        return SingleChildScrollView(
-          child: Container(
-            decoration: BoxDecoration(
-              color: color ?? AppColorCS.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(radius),
-                topRight: Radius.circular(radius),
-              ),
+        return Container(
+          // padding: EdgeInsets.only(
+          //   bottom: MediaQuery.of(context).viewInsets.bottom,
+          // ),
+          decoration: BoxDecoration(
+            color: color ?? AppColorCS.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(radius),
+              topRight: Radius.circular(radius),
             ),
-            padding: padding,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  width: 65,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(2.5)),
-                    // color: withStrip ? const Color(0xffe8e8e8) : Colors.transparent,
-                    color: withStrip ? const Color(0xffC9CDD4) : Colors.transparent,
-                  ),
+          ),
+          padding: padding,
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: 65,
+                height: 5,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(2.5)),
+                  // color: withStrip ? const Color(0xffe8e8e8) : Colors.transparent,
+                  color: withStrip ? const Color(0xffC9CDD4) : Colors.transparent,
                 ),
-                const SizedBox(height: 24),
-                content!,
-              ],
-            ),
+              ),
+              const SizedBox(height: 24),
+              content!,
+            ],
           ),
         );
       },
       isDismissible: isDismissable,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
     );
   }
 
