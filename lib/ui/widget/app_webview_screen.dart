@@ -29,6 +29,13 @@ class AppWebViewScreen extends StatelessWidget {
       ),
     );
 
+    InAppWebViewSettings options2 = InAppWebViewSettings(
+      useShouldOverrideUrlLoading: true,
+      mediaPlaybackRequiresUserGesture: (Platform.isIOS) ? false : true,
+      allowsInlineMediaPlayback: true,
+      useHybridComposition: true,
+    );
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -57,8 +64,10 @@ class AppWebViewScreen extends StatelessWidget {
             const Divider(),
             Expanded(
               child: InAppWebView(
-                initialOptions: options,
-                initialUrlRequest: URLRequest(url: Uri.parse(linkUrl)),
+                // initialOptions: options,
+                initialSettings: options2,
+                initialUrlRequest: URLRequest(url: WebUri(linkUrl)),
+                // initialUrlRequest: URLRequest(url: Uri.parse(linkUrl)),
               ),
             )
           ],

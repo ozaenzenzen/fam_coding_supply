@@ -2,6 +2,7 @@ name: fam_coding_supply
 description: "A new Flutter plugin project."
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -9,13 +10,20 @@ environment:
 
 dependencies:
   dio: ^4.0.6
-  connectivity_plus: ^2.3.9
+  connectivity_plus: 5.0.0
+  # connectivity_plus: ^2.3.9
   image_picker: ^0.8.7+4
-  intl: ^0.19.0
+  intl: 0.19.0
   package_info_plus: ^4.2.0
-  skeletons: ^0.0.3
+  # skeletons: ^0.0.3
+  # skeletons: 
+  #   path: ../skeletons
+  skeletons:
+    git:
+      url: https://github.com/ozaenzenzen/flutter_package_skeletons
+      ref: master
   google_fonts: 5.0.0
-  flutter_keychain: 2.3.0
+  # flutter_keychain: 2.5.0
   flutter_screenutil: ^5.9.0
   hive_flutter: 1.1.0
   hex:
@@ -27,10 +35,13 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   device_info_plus: ^9.1.2
   uuid: ^4.2.2
-  geolocator: 8.2.1
-  app_settings: 4.1.8
+  geolocator: 11.1.0
+  # geolocator: 8.2.1
+  app_settings: 5.2.0
+  # app_settings: 4.1.8
   super_tooltip: ^2.0.8
-  flutter_inappwebview: ^5.7.2+3
+  flutter_inappwebview: 6.0.0
+  # flutter_inappwebview: ^5.7.2+3
   flutter_image_compress: ^2.3.0
   http_parser: ^4.0.2
 
