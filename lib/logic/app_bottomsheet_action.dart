@@ -47,7 +47,7 @@ class AppBottomSheetAction {
                 ),
               ),
               const SizedBox(height: 24),
-              content!,
+              content ?? const SizedBox(),
             ],
           ),
         );

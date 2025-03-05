@@ -323,71 +323,53 @@ class AppBottomSheetUtilsCS {
       isScrollControlled: isScrollControlled,
       useSafeArea: useSafeArea,
       builder: (BuildContext context) {
-        return Wrap(
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              decoration: BoxDecoration(
-                color: color ?? Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: radius != null ? Radius.circular(radius) : const Radius.circular(0),
-                  topRight: radius != null ? Radius.circular(radius) : const Radius.circular(0),
+        return StatefulBuilder(builder: (context, setState1) {
+          setState1.call(() {});
+          return Wrap(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
-              ),
-              // padding: padding,
-              child: Column(
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 5.h),
-                      Center(
-                        child: Column(
-                          children: [
-                            SizedBox(height: 3.h),
-                            Container(
-                              height: 5.h,
-                              width: 36.w,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2.5),
-                                color: const Color(0xffC6C6C9),
+                decoration: BoxDecoration(
+                  color: color ?? Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: radius != null ? Radius.circular(radius) : const Radius.circular(0),
+                    topRight: radius != null ? Radius.circular(radius) : const Radius.circular(0),
+                  ),
+                ),
+                // padding: padding,
+                child: Column(
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 5.h),
+                        Center(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 3.h),
+                              Container(
+                                height: 5.h,
+                                width: 36.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.5),
+                                  color: const Color(0xffC6C6C9),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 16.h),
-                      if (useHeader) ...[
-                        actions != null
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                                    child: Text(
-                                      title,
-                                      style: mainTextStyle.copyWith(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff1A1C1E),
-                                      ),
-                                    ),
-                                  ),
-                                  // ...actions,
-                                  Row(
-                                    children: actions,
-                                  ),
-                                ],
-                              )
-                            : centerTitle
-                                ? Center(
-                                    child: Padding(
+                        SizedBox(height: 16.h),
+                        if (useHeader) ...[
+                          actions != null
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
                                       padding: EdgeInsets.symmetric(horizontal: 12.w),
                                       child: Text(
                                         title,
-                                        textAlign: TextAlign.center,
                                         style: mainTextStyle.copyWith(
                                           fontSize: 16.sp,
                                           fontWeight: FontWeight.w700,
@@ -395,50 +377,71 @@ class AppBottomSheetUtilsCS {
                                         ),
                                       ),
                                     ),
-                                  )
-                                : Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                                    child: Text(
-                                      title,
-                                      style: mainTextStyle.copyWith(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xff1A1C1E),
+                                    // ...actions,
+                                    Row(
+                                      children: actions,
+                                    ),
+                                  ],
+                                )
+                              : centerTitle
+                                  ? Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                        child: Text(
+                                          title,
+                                          textAlign: TextAlign.center,
+                                          style: mainTextStyle.copyWith(
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xff1A1C1E),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                      child: Text(
+                                        title,
+                                        style: mainTextStyle.copyWith(
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xff1A1C1E),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                        SizedBox(height: 16.h),
-                        Container(
-                          height: 2.h,
-                          decoration: const BoxDecoration(
-                            color: Color(0XFFF1F0F4),
+                          SizedBox(height: 16.h),
+                          Container(
+                            height: 2.h,
+                            decoration: const BoxDecoration(
+                              color: Color(0XFFF1F0F4),
+                            ),
                           ),
-                        ),
+                        ],
                       ],
-                    ],
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height * 0.9,
                     ),
-                    // child: content ?? Container(),
-                    child: SingleChildScrollView(
-                      child: content ?? Container(),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.of(context).size.height * 0.9,
+                      ),
+                      // child: content ?? Container(),
+                      child: SingleChildScrollView(
+                        child: content ?? Container(),
+                      ),
                     ),
-                  ),
-                  // SingleChildScrollView(
-                  //   child: content ?? Container(),
-                  // )
-                  // Expanded(
-                  //   child: SingleChildScrollView(
-                  //     child: content ?? Container(),
-                  //   ),
-                  // ),
-                ],
+                    // SingleChildScrollView(
+                    //   child: content ?? Container(),
+                    // )
+                    // Expanded(
+                    //   child: SingleChildScrollView(
+                    //     child: content ?? Container(),
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        );
+            ],
+          );
+        });
       },
     );
     isBottomSheetOpen?.call(false);
