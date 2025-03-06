@@ -20,6 +20,8 @@ export 'package:intl/intl.dart';
 export 'package:dio/dio.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:skeletons/skeletons.dart';
+export 'package:app_settings/app_settings.dart';
+export 'package:get_storage/get_storage.dart';
 
 class FamCodingSupply {
   AppConnectivityServiceCS appConnectivityService = AppConnectivityServiceCS();
