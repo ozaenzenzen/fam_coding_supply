@@ -19,6 +19,7 @@ export 'package:super_tooltip/super_tooltip.dart';
 export 'package:intl/intl.dart';
 export 'package:dio/dio.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:skeletons/skeletons.dart';
 
 class FamCodingSupply {
   AppConnectivityServiceCS appConnectivityService = AppConnectivityServiceCS();
