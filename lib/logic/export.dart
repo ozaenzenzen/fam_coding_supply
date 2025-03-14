@@ -18,3 +18,4 @@ export 'package:fam_coding_supply/logic/encrypt_utils.dart';
 export 'package:fam_coding_supply/logic/local_service_hive.dart';
 export 'package:fam_coding_supply/logic/local_service.dart';
 export 'package:fam_coding_supply/logic/model/device_info_data_entity.dart';
+export 'package:fam_coding_supply/logic/extension/string_casing_extension.dart';
