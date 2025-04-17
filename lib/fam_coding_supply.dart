@@ -22,6 +22,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:skeletons/skeletons.dart';
 export 'package:app_settings/app_settings.dart';
 export 'package:get_storage/get_storage.dart';
+export 'package:web_socket_channel/web_socket_channel.dart';
 
 class FamCodingSupply {
   AppConnectivityServiceCS appConnectivityService = AppConnectivityServiceCS();

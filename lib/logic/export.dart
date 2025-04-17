@@ -9,6 +9,8 @@ export 'package:fam_coding_supply/logic/app_date_time_helper.dart';
 export 'package:fam_coding_supply/logic/app_device_info.dart';
 export 'package:fam_coding_supply/logic/app_dialog_action.dart';
 export 'package:fam_coding_supply/logic/app_image_picker.dart';
+export 'package:fam_coding_supply/logic/app_file_picker.dart';
+export 'package:fam_coding_supply/logic/app_websocket_service.dart';
 export 'package:fam_coding_supply/logic/app_info.dart';
 export 'package:fam_coding_supply/logic/app_location_service.dart';
 export 'package:fam_coding_supply/logic/app_logger.dart';
