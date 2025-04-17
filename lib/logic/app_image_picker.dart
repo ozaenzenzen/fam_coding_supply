@@ -12,6 +12,8 @@ class AppImagePickerServiceCS {
   Future<XFile?> getImage({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    void Function(double sizeFileValue)? onSizeFile,
+    void Function(String fileNameValue)? onFileName,
   }) async {
     try {
       final XFile? image = await _picker.pickImage(
@@ -21,7 +23,11 @@ class AppImagePickerServiceCS {
       );
       File fileFormat = File(image!.path);
 
-      await calculateSize(fileFormat);
+      String fileName = getFileName(fileFormat);
+      onFileName?.call(fileName);
+
+      double sizeFile = await calculateSizeWithValue(fileFormat);
+      onSizeFile?.call(sizeFile);
 
       return image;
     } catch (e) {
@@ -33,6 +39,8 @@ class AppImagePickerServiceCS {
   Future<String?> getImageAsBase64({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    void Function(double sizeFileValue)? onSizeFile,
+    void Function(String fileNameValue)? onFileName,
   }) async {
     try {
       final XFile? image = await _picker.pickImage(
@@ -42,7 +50,11 @@ class AppImagePickerServiceCS {
       );
       File fileFormat = File(image!.path);
 
-      await calculateSize(fileFormat);
+      String fileName = getFileName(fileFormat);
+      onFileName?.call(fileName);
+
+      double sizeFile = await calculateSizeWithValue(fileFormat);
+      onSizeFile?.call(sizeFile);
 
       String base64Image = base64Encode(fileFormat.readAsBytesSync());
       return base64Image;
@@ -55,6 +67,8 @@ class AppImagePickerServiceCS {
   Future<File?> getImageAsFile({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    void Function(double sizeFileValue)? onSizeFile,
+    void Function(String fileNameValue)? onFileName,
   }) async {
     try {
       final XFile? image = await _picker.pickImage(
@@ -65,8 +79,12 @@ class AppImagePickerServiceCS {
         maxWidth: 400,
       );
       File fileFormat = File(image!.path);
+      
+      String fileName = getFileName(fileFormat);
+      onFileName?.call(fileName);
 
-      await calculateSize(fileFormat);
+      double sizeFile = await calculateSizeWithValue(fileFormat);
+      onSizeFile?.call(sizeFile);
 
       return fileFormat;
     } catch (e) {
@@ -78,6 +96,8 @@ class AppImagePickerServiceCS {
   Future<MultipartFile?> getImageAsMultipartFile({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    void Function(double sizeFileValue)? onSizeFile,
+    void Function(String fileNameValue)? onFileName,
   }) async {
     try {
       final XFile? image = await _picker.pickImage(
@@ -89,7 +109,11 @@ class AppImagePickerServiceCS {
       );
       File fileFormat = File(image!.path);
 
-      await calculateSize(fileFormat);
+      String fileName = getFileName(fileFormat);
+      onFileName?.call(fileName);
+
+      double sizeFile = await calculateSizeWithValue(fileFormat);
+      onSizeFile?.call(sizeFile);
 
       List<String> listSplitString = fileFormat.path.toString().split('/');
 
@@ -105,12 +129,26 @@ class AppImagePickerServiceCS {
     }
   }
 
-  
+  String getFileName(File fileFormat) {
+    String fileName = fileFormat.path.split('/').last;
+    AppLoggerCS.debugLog("[getFileName]: $fileName");
+    return fileName;
+  }
+
   Future<void> calculateSize(File fileFormat) async {
     // Calculate the size in MB
     int sizeInBytes = await fileFormat.length();
     double sizeInMb = sizeInBytes / (1024 * 1024);
     AppLoggerCS.debugLog("Image Size MB: $sizeInMb");
     AppLoggerCS.debugLog("Image Size KB: ${sizeInMb * 1000}");
+  }
+
+  Future<double> calculateSizeWithValue(File fileFormat) async {
+    // Calculate the size in MB
+    int sizeInBytes = await fileFormat.length();
+    double sizeInMb = sizeInBytes / (1024 * 1024);
+    AppLoggerCS.debugLog("Image Size MB: $sizeInMb");
+    AppLoggerCS.debugLog("Image Size KB: ${sizeInMb * 1000}");
+    return sizeInMb;
   }
 }
