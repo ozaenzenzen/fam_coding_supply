@@ -62,7 +62,8 @@ class AppApiServiceCS {
       }
     }
 
-    debugPrint('URL : ${dio.options.baseUrl}$url');
+    debugPrint('URL : $url');
+    debugPrint('BaseURL : ${dio.options.baseUrl}');
     debugPrint('Method : $method');
     debugPrint("Header : ${dio.options.headers}");
     debugPrint("Request : $request");
