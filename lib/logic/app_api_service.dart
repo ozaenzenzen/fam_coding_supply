@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:fam_coding_supply/fam_coding_supply.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,25 @@ class AppApiServiceCS {
     dio.options.receiveTimeout = 50000; //50s
     dio.options.headers = {'Accept': 'application/json'};
     dio.options.receiveDataWhenStatusError = true;
+  }
+
+  
+  /// WARNING!!! THIS SHOULD BE FALSE ON PRODUCTION
+  bool useFoundation = false;
+
+  /// WARNING!!! THIS SHOULD BE FALSE ON PRODUCTION
+  bool useLogger = false;
+
+  _localDebugPrint(String value, {bool isActive = true}) {
+    if (useLogger) {
+      if (isActive) {
+        if (useFoundation) {
+          debugPrint(value);
+        } else {
+          log(value);
+        }
+      }
+    }
   }
 
   Future<Response> call(
@@ -62,11 +83,15 @@ class AppApiServiceCS {
       }
     }
 
-    debugPrint('URL : $url');
-    debugPrint('BaseURL : ${dio.options.baseUrl}');
-    debugPrint('Method : $method');
-    debugPrint("Header : ${dio.options.headers}");
-    debugPrint("Request : $request");
+    _localDebugPrint('\n');
+    _localDebugPrint('======================================================================');
+    _localDebugPrint('URL : $url');
+    _localDebugPrint('BaseURL : ${dio.options.baseUrl}');
+    _localDebugPrint('Method : $method');
+    _localDebugPrint("Header : ${dio.options.headers}");
+    _localDebugPrint("Request : $request");
+    _localDebugPrint('======================================================================');
+    _localDebugPrint('\n');
 
     // ignore: unused_local_variable
     MethodRequestCS selectedMethod;
