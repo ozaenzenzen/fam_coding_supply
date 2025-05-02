@@ -6,11 +6,14 @@ import 'package:fam_coding_supply/logic/app_logger.dart';
 class AppFilePickerServiceCS {
   Future<File?> pickFiles({
     bool allowMultiples = false,
+    int compressionQuality = 0,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles();
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        compressionQuality: compressionQuality,
+      );
       if (result != null) {
         File fileFormat = File(result.files.single.path!);
         
@@ -33,6 +36,27 @@ class AppFilePickerServiceCS {
     String fileName = fileFormat.path.split('/').last;
     AppLoggerCS.debugLog("[getFileName]: $fileName");
     return fileName;
+  }
+
+  String getExtensionFile(File fileFormat) {
+    String fileName = (fileFormat.path.split('/').last).split('.').last;
+    AppLoggerCS.debugLog("[getExtensionFile]: $fileName");
+    return fileName;
+  }
+
+  String getExtensionFileFromPath(String filePath) {
+    String fileName = (filePath.split('/').last).split('.').last;
+    AppLoggerCS.debugLog("[getExtensionFileFromPath]: $fileName");
+    return fileName;
+  }
+
+  bool isImageFile(String path) {
+    final imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.heic', '.heif', '.tiff', '.tif', '.svg'];
+
+    final lowerPath = path.toLowerCase();
+    bool result = imageExtensions.any((ext) => lowerPath.endsWith(ext));
+    // AppLoggerCS.debugLog("result: $result");
+    return result;
   }
 
   Future<void> calculateSize(File fileFormat) async {

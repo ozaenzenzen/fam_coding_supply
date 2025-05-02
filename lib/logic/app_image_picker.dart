@@ -12,6 +12,7 @@ class AppImagePickerServiceCS {
   Future<XFile?> getImage({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    int imageQuality = 10,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
@@ -19,7 +20,7 @@ class AppImagePickerServiceCS {
       final XFile? image = await _picker.pickImage(
         source: imageSource,
         preferredCameraDevice: preferredCameraDevice,
-        imageQuality: 10,
+        imageQuality: imageQuality,
       );
       File fileFormat = File(image!.path);
 
@@ -39,6 +40,7 @@ class AppImagePickerServiceCS {
   Future<String?> getImageAsBase64({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    int imageQuality = 10,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
@@ -46,7 +48,7 @@ class AppImagePickerServiceCS {
       final XFile? image = await _picker.pickImage(
         source: imageSource,
         preferredCameraDevice: preferredCameraDevice,
-        imageQuality: 10,
+        imageQuality: imageQuality,
       );
       File fileFormat = File(image!.path);
 
@@ -67,6 +69,7 @@ class AppImagePickerServiceCS {
   Future<File?> getImageAsFile({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    int imageQuality = 10,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
@@ -74,7 +77,7 @@ class AppImagePickerServiceCS {
       final XFile? image = await _picker.pickImage(
         source: imageSource,
         preferredCameraDevice: preferredCameraDevice,
-        imageQuality: 10,
+        imageQuality: imageQuality,
         maxHeight: 400,
         maxWidth: 400,
       );
@@ -96,6 +99,7 @@ class AppImagePickerServiceCS {
   Future<MultipartFile?> getImageAsMultipartFile({
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
+    int imageQuality = 10,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
@@ -103,7 +107,7 @@ class AppImagePickerServiceCS {
       final XFile? image = await _picker.pickImage(
         source: imageSource,
         preferredCameraDevice: preferredCameraDevice,
-        imageQuality: 10,
+        imageQuality: imageQuality,
         maxHeight: 400,
         maxWidth: 400,
       );
