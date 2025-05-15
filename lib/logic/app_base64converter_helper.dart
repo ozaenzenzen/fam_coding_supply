@@ -2,6 +2,11 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class AppBase64ConverterHelper {
+  String stripBase64Prefix(String base64Str) {
+    final regex = RegExp(r'data:.*?;base64,');
+    return base64Str.replaceFirst(regex, '');
+  }
+
   // Function to decode Base64 string and return Uint8List on a background isolate
   Future<Uint8List> decodeBase64Cleaning(String base64String) async {
     return await compute(_base64DecodeCleaning, base64String);
@@ -9,9 +14,10 @@ class AppBase64ConverterHelper {
 
   // Helper function for decoding base64 to Uint8List
   Uint8List _base64DecodeCleaning(String base64String) {
-    Uint8List value = Uri.parse(base64String).data!.contentAsBytes();
-    return value;
-    // return base64Decode(value);
+    // Uint8List value = Uri.parse(base64String).data!.contentAsBytes();
+    // return value;
+    String strippedBase64 = stripBase64Prefix(base64String);
+    return base64Decode(strippedBase64);
   }
 
   // Function to decode Base64 string and return Uint8List on a background isolate
