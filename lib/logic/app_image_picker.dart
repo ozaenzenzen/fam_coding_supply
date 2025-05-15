@@ -152,7 +152,7 @@ class AppImagePickerServiceCS {
   }
 
   bool isImageFile(String path) {
-    final imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.heic', '.heif', '.tiff', '.tif', '.svg'];
+    final imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.heic', '.heif', '.tiff', '.tif', '.svg', '.webpg'];
 
     final lowerPath = path.toLowerCase();
     bool result = imageExtensions.any((ext) => lowerPath.endsWith(ext));
