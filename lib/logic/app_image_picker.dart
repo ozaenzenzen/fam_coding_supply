@@ -70,6 +70,8 @@ class AppImagePickerServiceCS {
     ImageSource imageSource = ImageSource.gallery,
     CameraDevice preferredCameraDevice = CameraDevice.rear,
     int imageQuality = 10,
+    double? maxHeight,
+    double? maxWidth,
     void Function(double sizeFileValue)? onSizeFile,
     void Function(String fileNameValue)? onFileName,
   }) async {
@@ -78,8 +80,8 @@ class AppImagePickerServiceCS {
         source: imageSource,
         preferredCameraDevice: preferredCameraDevice,
         imageQuality: imageQuality,
-        maxHeight: 400,
-        maxWidth: 400,
+        maxHeight: maxHeight,
+        maxWidth: maxWidth,
       );
       File fileFormat = File(image!.path);
       
