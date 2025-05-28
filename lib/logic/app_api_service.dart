@@ -124,9 +124,10 @@ class AppApiServiceCS {
           );
       }
       // debugPrint('Success $selectedMethod $url: \nResponse : ${url.contains("rss") ? "rss feed response to long" : response.data}');
+      _localDebugPrint("response: $response");
       return response;
     } on DioError catch (e) {
-      // debugPrint('Error $selectedMethod $url: $e\nData: ${(e.response?.data ?? "empty")}');
+      _localDebugPrint('Error $url: $e\nData: ${(e.response?.data ?? "empty")}');
       if (e.response?.data is Map) {
         if ((e.response?.data as Map)['status'] == null) {
           (e.response?.data as Map).addAll(<String, dynamic>{
