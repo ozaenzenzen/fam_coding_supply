@@ -473,6 +473,7 @@ class AppDialogActionCS {
     required String description,
     required String buttonTitle,
     Function()? mainButtonAction,
+    Color? mainButtonColor,
     double radius = 10,
     double? buttonHeight,
     double? buttonTextSize,
@@ -515,6 +516,7 @@ class AppDialogActionCS {
         ],
       ),
       buttonTitle: buttonTitle,
+      mainButtonColor: mainButtonColor,
       mainButtonAction: mainButtonAction ??
           () {
             if (barrierDismissible) {
@@ -530,6 +532,7 @@ class AppDialogActionCS {
     required String description,
     required String buttonTitle,
     required Function() mainButtonAction,
+    Color? mainButtonColor,
     double radius = 10,
     double? buttonHeight,
     double? buttonTextSize,
@@ -572,6 +575,7 @@ class AppDialogActionCS {
         ],
       ),
       buttonTitle: buttonTitle,
+      mainButtonColor: mainButtonColor,
       // mainButtonAction: mainButtonAction ??
       //     () {
       //       if (barrierDismissible) {
