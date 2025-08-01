@@ -1,4 +1,3 @@
-export 'package:fam_coding_supply/logic/app_api_path.dart';
 export 'package:fam_coding_supply/logic/app_api_service.dart';
 export 'package:fam_coding_supply/logic/app_assets.dart';
 export 'package:fam_coding_supply/logic/app_base64converter_helper.dart';
