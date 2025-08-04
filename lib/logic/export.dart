@@ -14,6 +14,7 @@ export 'package:fam_coding_supply/logic/app_info.dart';
 export 'package:fam_coding_supply/logic/app_location_service.dart';
 export 'package:fam_coding_supply/logic/app_logger.dart';
 export 'package:fam_coding_supply/logic/app_size.dart';
+export 'package:fam_coding_supply/logic/app_permission_handler.dart';
 export 'package:fam_coding_supply/logic/app_theme.dart';
 export 'package:fam_coding_supply/logic/encrypt_utils.dart';
 export 'package:fam_coding_supply/logic/local_service_hive.dart';
