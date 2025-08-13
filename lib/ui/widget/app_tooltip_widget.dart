@@ -21,7 +21,7 @@ class AppTooltipWidget extends StatelessWidget {
     return SuperTooltip(
       showBarrier: true,
       controller: tooltipController,
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.black38,
       content: Text(
         message,
         softWrap: true,
