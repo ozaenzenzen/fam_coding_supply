@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:fam_coding_supply/logic/app_logger.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:developer';
 
 class AppImagePickerServiceCS {
   final ImagePicker _picker = ImagePicker();
@@ -84,7 +85,7 @@ class AppImagePickerServiceCS {
         maxWidth: maxWidth,
       );
       File fileFormat = File(image!.path);
-      
+
       String fileName = getFileName(fileFormat);
       onFileName?.call(fileName);
 
@@ -141,7 +142,7 @@ class AppImagePickerServiceCS {
     return fileName;
   }
 
-    String getExtensionFile(File fileFormat) {
+  String getExtensionFile(File fileFormat) {
     String fileName = (fileFormat.path.split('/').last).split('.').last;
     AppLoggerCS.debugLog("[getExtensionFile]: $fileName");
     return fileName;
