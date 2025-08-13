@@ -8,6 +8,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppDialogActionCS {
+  static bool _useCustomGeneralButtonColor = false;
+  static Color? _mainButtonColor;
+  static Color? _secondaryButtonColor;
+
+  static void setupGeneral({
+    bool useCustomGeneralButtonColor = false,
+    Color? mainButtonColor,
+    Color? secondaryButtonColor,
+  }) {
+    _useCustomGeneralButtonColor = useCustomGeneralButtonColor;
+    _mainButtonColor = mainButtonColor;
+    _secondaryButtonColor = secondaryButtonColor;
+  }
+
   static Future<void> showSuccessSignUp({
     required BuildContext context,
     required Function() mainButtonAction,
